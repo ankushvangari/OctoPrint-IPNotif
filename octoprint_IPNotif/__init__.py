@@ -14,6 +14,8 @@ import octoprint.plugin
 import requests
 import os
 
+from twilio.rest import Client
+
 class IPNotifPlugin(octoprint.plugin.SettingsPlugin,
                     octoprint.plugin.AssetPlugin,
                     octoprint.plugin.TemplatePlugin,
@@ -26,6 +28,10 @@ class IPNotifPlugin(octoprint.plugin.SettingsPlugin,
         	headers = {"Access-Token": self._settings.get(["key"])}
         	url = "https://api.pushbullet.com/v2/pushes"
         	r = requests.post(url, data=jsonData, headers=headers)
+
+		#Twilio Text Notification
+		client = Client('ACfe93b66865eb27816e7548b9808029b5', '38e4e572502ac4a13690173bbd008b2d')
+		message = client.message.create(from = '+14243735073', to = '+15624122360', body = 'test')
 
     	def get_settings_defaults(self):
         	return dict(key="YOUR PUSHBULLET API KEY")

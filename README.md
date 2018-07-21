@@ -1,6 +1,6 @@
 # OctoPrint-IPNotif
 
-**TODO:** Describe what your plugin does.
+**TODO:** OctoPrint-IPNotif will send you a notification via email, text, and/or pushbullet on OctoPi's server startup.
 
 ## Setup
 
@@ -14,4 +14,4 @@ the plugin manager.
 
 ## Configuration
 
-**TODO:** Describe your plugin's configuration options (if any).
+**TODO:** Once installed, you can add your email, Twilio number, and/or Pushbullet API Key to receive IP Notifications on the next server startup.
