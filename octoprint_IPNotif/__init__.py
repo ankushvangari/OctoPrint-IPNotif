@@ -23,7 +23,6 @@ class IPNotifPlugin(octoprint.plugin.SettingsPlugin,
 
         def on_after_startup(self):
         	IPAddress = os.popen("hostname -I").read()
-        	APIKEY = "o.LBVm5sb3MRFOqlIf7w3KGVwHMq7sIP4v"
         	jsonData = {"type": "note", "title": "Octopi\'s IP Address", "body": "Your Octopi\'s IP Address is {}".format(IPAddress)}
         	headers = {"Access-Token": self._settings.get(["key"])}
         	url = "https://api.pushbullet.com/v2/pushes"
@@ -31,7 +30,7 @@ class IPNotifPlugin(octoprint.plugin.SettingsPlugin,
 
 		#Twilio Text Notification
 		client = Client('ACfe93b66865eb27816e7548b9808029b5', '38e4e572502ac4a13690173bbd008b2d')
-		message = client.message.create(from = '+14243735073', to = '+15624122360', body = 'test')
+		message = client.messages.create(from_='+14243735073', to='+15624122360', body='Your Octopi\'s IP Address is {}'.format(IPAddress))
 
     	def get_settings_defaults(self):
         	return dict(key="YOUR PUSHBULLET API KEY")
