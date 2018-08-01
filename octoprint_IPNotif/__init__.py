@@ -25,7 +25,6 @@ class IPNotifPlugin(octoprint.plugin.SettingsPlugin,
                     octoprint.plugin.StartupPlugin):
 
         def on_after_startup(self):
-<<<<<<< HEAD
 		send_pushbullet_notification()
 #        	IPAddress = os.popen("hostname -I").read()
 #        	jsonData = {"type": "note", "title": "Octopi\'s IP Address", "body": "Your Octopi\'s IP Address is {}".format(IPAddress)}
@@ -60,18 +59,6 @@ class IPNotifPlugin(octoprint.plugin.SettingsPlugin,
 		s.login(fromEmail, fromPassword)
 		s.sendmail(fromEmail, 'to@gmail.com', msg.as_string())
 		s.quit()
-
-=======
-        	IPAddress = os.popen("hostname -I").read()
-        	jsonData = {"type": "note", "title": "Octopi\'s IP Address", "body": "Your Octopi\'s IP Address is {}".format(IPAddress)}
-        	headers = {"Access-Token": self._settings.get(["key"])}
-        	url = "https://api.pushbullet.com/v2/pushes"
-        	r = requests.post(url, data=jsonData, headers=headers)
-
-		#Twilio Text Notification
-		client = Client('', '')
-		message = client.message.create(from = '+14243735073', to = '+15624122360', body = 'test')
->>>>>>> b2799f817fb0fb4512d94c3f4346a09cf52104c2
 
     	def get_settings_defaults(self):
         	return [
