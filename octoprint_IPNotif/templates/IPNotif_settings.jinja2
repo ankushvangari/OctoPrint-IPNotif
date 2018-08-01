@@ -2,7 +2,31 @@
     <div class="control-group">
         <label class="control-label">{{ _('Pushbullet API Key') }}</label>
         <div class="controls">
-            <input type="text" class="input-block-level" data-bind="value: settings.plugins.IPNotif.key">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.IPNotif.pushbulletKey">
+        </div>
+        <label class="control-label">{{ _('Twilio SID') }}</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.IPNotif.twilioSID">
+        </div>
+        <label class="control-label">{{ _('Twilio API Key') }}</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.IPNotif.twilioKey">
+        </div>
+        <label class="control-label">{{ _('Twilio Number') }}</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.IPNotif.twilioNumber">
+        </div>
+        <label class="control-label">{{ _('To Number') }}</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.IPNotif.ToNumber">
+        </div>
+        <label class="control-label">{{ _('Email Username') }}</label>
+        <div class="controls">
+            <input type="text" class="input-block-level" data-bind="value: settings.plugins.IPNotif.emailUsername">
+        </div>
+        <label class="control-label">{{ _('Email Password') }}</label>
+        <div class="controls">
+            <input type="password" class="input-block-level" data-bind="value: settings.plugins.IPNotif.emailPassword">
         </div>
     </div>
 </form>
