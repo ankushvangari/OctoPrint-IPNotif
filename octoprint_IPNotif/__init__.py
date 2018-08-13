@@ -32,6 +32,13 @@ def send_email_notification(self):
                 s.sendmail(fromEmail, 'to@gmail.com', msg.as_string())
                 s.quit()
 
+def send_text_notification(self):
+		IPAddress = os.popen("hostname -I").read()
+		client = Client(self._settings.get(["twilioSID"]), self._settings.get(["twilioKey"]))
+		message = client.messages.create(from_='+1{}'.format(self._settings.get(["twilioNumber"])),
+                                                to='+1{}'.format(self._settings.get(["ToNumber"])),
+                                                body='Your Octopi\'s IP Address is {}'.format(IPAddress))
+
 class IPNotifPlugin(octoprint.plugin.SettingsPlugin,
                     octoprint.plugin.AssetPlugin,
                     octoprint.plugin.TemplatePlugin,
@@ -39,16 +46,8 @@ class IPNotifPlugin(octoprint.plugin.SettingsPlugin,
 
 	def on_after_startup(self):
 		send_pushbullet_notification(self)
-#        	IPAddress = os.popen("hostname -I").read()
-#        	jsonData = {"type": "note", "title": "Octopi\'s IP Address", "body": "Your Octopi\'s IP Address is {}".format(IPAddress)}
-#        	headers = {"Access-Token": self._settings.get(["pushbulletKey"])}
-#        	url = "https://api.pushbullet.com/v2/pushes"
-#        	r = requests.post(url, data=jsonData, headers=headers)
+		send_text_notification(self)
 		send_email_notification(self)
-
-		#Twilio Text Notification
-#		client = Client(self._settings.get(["twilioSID"]), self._settings.get(["twilioKey"]))
-#		message = client.messages.create(from_='+1{}'.format(self._settings.get(["twilioNumber"])), to='+1{}'.format(self._settings.get(["ToNumber"])),body='Your Octopi\'s IP Address is {}'.format(IPAddress))
 
 	def get_settings_defaults(self):
         	return [
