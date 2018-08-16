@@ -24,12 +24,12 @@ def send_email_notification(self):
                 msg = MIMEMultipart()
                 message = 'Your Octopi\'s IP Address is {}'.format(IPAddress)
                 msg['From']=fromEmail
-                msg['To']='to@gmail.com'
+                msg['To']=self._settings.get(['toEmailUsername'])
                 msg['Subject']='OctoPi\'s IP Address'
                 msg.attach(MIMEText(message, 'plain'))
                 s = smtplib.SMTP_SSL('smtp.gmail.com')
                 s.login(fromEmail, fromPassword)
-                s.sendmail(fromEmail, 'to@gmail.com', msg.as_string())
+                s.sendmail(fromEmail, self._settings.get(['toEmailUsernam']), msg.as_string())
                 s.quit()
 
 def send_text_notification(self):
@@ -55,9 +55,10 @@ class IPNotifPlugin(octoprint.plugin.SettingsPlugin,
 			dict(twilioSID="YOUR TWILIO SID"),
 			dict(twilioKey="YOUR TWILIO API KEY"),
 			dict(twilioNumber="YOUR TWILIO NUMBER"),
-			dict(ToNumber="YOUR NUMBER").
-			dict(emailUsername="YOUR EMAIL USERNAME"),
-			dict(emailPassword="YOUR EMAIL PASSWORD")
+			dict(ToNumber="YOUR RECEIVING NUMBER").
+			dict(emailUsername="YOUR FROM EMAIL USERNAME"),
+			dict(emailPassword="YOUR FROM EMAIL PASSWORD"),
+			dict(toEmailUsername='YOUR RECEIVER EMAIL ADDRESS')
 		]
 
 	def get_template_vars(self):
@@ -69,6 +70,7 @@ class IPNotifPlugin(octoprint.plugin.SettingsPlugin,
 			dict(key=self._settings.get(["ToNumber"])),
 			dict(key=self._settings.get(["emailUsername"])),
 			dict(key=self._settings.get(["emailPassword"])),
+			dict(key=self._settings.get(['toEmailUsername']))
 		]
 	def get_template_configs(self):
 		return [
