@@ -9,8 +9,7 @@ or manually using this URL:
 
     https://github.com/ankushvangari/OctoPrint-IPNotif/archive/master.zip
 
-**TODO:** Describe how to install your plugin, if more needs to be done than just installing it via pip or through
-the plugin manager.
+**TODO:** Install the plugin and enter all your credentials in the Settings and reboot to start receiving notifications!
 
 ## Configuration
 
