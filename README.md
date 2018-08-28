@@ -1,6 +1,6 @@
 # OctoPrint-IPNotif
 
-**TODO:** OctoPrint-IPNotif will send you a notification via email, text, and/or pushbullet on OctoPi's server startup.
+OctoPrint-IPNotif is a plugin that will send you a notification of your OctoPi's IP Address via email, text, and/or pushbullet on OctoPi's server startup.
 
 ## Setup
 
@@ -9,7 +9,7 @@ or manually using this URL:
 
     https://github.com/ankushvangari/OctoPrint-IPNotif/archive/master.zip
 
-**TODO:** Install the plugin and enter all your credentials in the Settings and reboot to start receiving notifications!
+**TODO:** Install the plugin and enter all the credentials needed for the form of notification you prefer in the Settings and reboot to start receiving notifications!
 
 ## Configuration
 
